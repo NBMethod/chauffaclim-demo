@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0c0d;
+  --color-paper: #f6f5f2;
+  --color-line: #e2e0da;
+  --color-muted: #6a6964;
+  --color-heat: #e8590c;
+  --color-cool: #1c7ed6;
+  --font-sans: "Outfit Variable", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.duo {
+  background: linear-gradient(90deg, var(--color-heat), var(--color-cool));
+}
+.duo-text {
+  background: linear-gradient(90deg, var(--color-heat) 10%, var(--color-cool) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 500;
+  transition: transform 0.15s, background 0.15s, color 0.15s;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-dark {
+  background: var(--color-ink);
+  color: #fff;
+}
+.btn-light {
+  background: #fff;
+  color: var(--color-ink);
+}
+.btn-ghost {
+  border: 1px solid var(--color-ink);
+}
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: #fff;
+}
