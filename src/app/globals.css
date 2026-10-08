@@ -5,7 +5,7 @@
   --color-paper: #f6f5f2;
   --color-line: #e2e0da;
   --color-muted: #6a6964;
-  --color-heat: #e8590c;
+  --color-heat: #e03131;
   --color-cool: #1c7ed6;
   --font-sans: "Outfit Variable", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
 }
@@ -75,4 +75,98 @@ body {
 .btn-ghost:hover {
   background: var(--color-ink);
   color: #fff;
+}
+
+/* ---------- Apparition au défilement ---------- */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+html.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Survol des cartes de service ----------
+   .svc-heat : rouge (chauffage)
+   .svc-cool : bleu (climatisation, plomberie, salles de bains)
+   .svc-duo  : rouge + bleu (entretien & dépannage) */
+.svc {
+  position: relative;
+  isolation: isolate;
+}
+.svc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(110% 90% at 0% 0%, color-mix(in srgb, var(--svc) 14%, transparent), transparent 65%);
+}
+.svc::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--svc-line);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.svc-icon,
+.svc-title,
+.svc-more {
+  transition: color 0.3s, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.svc:is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+.svc:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+.svc:is(:hover, :focus-visible) :is(.svc-icon, .svc-title, .svc-more) {
+  color: var(--svc);
+}
+.svc:is(:hover, :focus-visible) .svc-icon {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.svc-heat {
+  --svc: var(--color-heat);
+  --svc-line: var(--color-heat);
+}
+.svc-cool {
+  --svc: var(--color-cool);
+  --svc-line: var(--color-cool);
+}
+.svc-duo {
+  --svc: var(--color-heat);
+  --svc-line: linear-gradient(90deg, var(--color-heat), var(--color-cool));
+}
+.svc-duo::before {
+  background:
+    radial-gradient(90% 80% at 0% 0%, color-mix(in srgb, var(--color-heat) 13%, transparent), transparent 65%),
+    radial-gradient(90% 80% at 100% 100%, color-mix(in srgb, var(--color-cool) 13%, transparent), transparent 65%);
+}
+.svc-duo:is(:hover, :focus-visible) :is(.svc-title, .svc-more-label) {
+  background-image: linear-gradient(90deg, var(--color-heat), var(--color-cool));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.svc-duo:is(:hover, :focus-visible) svg {
+  stroke: url(#duo-gradient);
 }

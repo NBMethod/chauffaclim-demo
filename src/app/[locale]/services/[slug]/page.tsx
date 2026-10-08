@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CtaBand, ServiceGrid } from "@/components/Blocks";
 import { Arrow, ServiceIcon } from "@/components/Icons";
 import { getDict } from "@/lib/dictionaries";
+import { reveal } from "@/lib/reveal";
 import { isLocale, isService, locales, serviceSlugs, site } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -34,11 +35,13 @@ export default async function ServicePage({ params }: Props) {
         </Link>
         <div className="mt-10 grid gap-14 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <ServiceIcon slug={slug} className="h-12 w-12" />
-            <h1 className="mt-6 text-5xl font-medium tracking-tight md:text-7xl">{s.name}</h1>
-            <div className="duo mt-8 h-1 w-24 rounded-full" />
-            <p className="mt-8 max-w-xl text-lg text-muted">{s.intro}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div {...reveal(0)}>
+              <ServiceIcon slug={slug} className="h-12 w-12" />
+            </div>
+            <h1 {...reveal(1)} className="mt-6 text-5xl font-medium tracking-tight md:text-7xl">{s.name}</h1>
+            <div className="duo mt-8 h-1 w-24 rounded-full" {...reveal(2)} />
+            <p className="mt-8 max-w-xl text-lg text-muted" {...reveal(2)}>{s.intro}</p>
+            <div className="mt-9 flex flex-wrap gap-3" {...reveal(3)}>
               <Link href={`/${locale}/contact`} className="btn btn-dark">
                 {t.nav.quote} <Arrow className="h-4 w-4" />
               </Link>
@@ -52,7 +55,7 @@ export default async function ServicePage({ params }: Props) {
               </p>
             )}
           </div>
-          <div className="rounded-3xl border border-line bg-white p-8 md:p-10">
+          <div className="h-fit rounded-3xl border border-line bg-white p-8 md:p-10" {...reveal(2)}>
             <h2 className="eyebrow">{t.servicePage.included}</h2>
             <ul className="mt-4">
               {s.items.map((it, i) => (
@@ -67,7 +70,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       <section className="container-x pb-24">
-        <h2 className="mb-8 text-2xl font-medium">{t.servicePage.others}</h2>
+        <h2 className="mb-8 text-2xl font-medium" {...reveal()}>{t.servicePage.others}</h2>
         <ServiceGrid locale={locale} t={t} exclude={slug} />
       </section>
 

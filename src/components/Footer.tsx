@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { serviceSlugs, site, type Locale } from "@/lib/site";
 import type { Dict } from "@/lib/dictionaries";
+import { SocialLinks } from "./Social";
 
 export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
   return (
@@ -11,9 +12,8 @@ export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
         <div>
           <Image src="/logo.png" alt={`${site.name} ${site.baseline}`} width={1092} height={323} className="h-14 w-auto invert" />
           <p className="mt-5 max-w-xs text-sm text-white/60">{t.footer.tagline}</p>
-          <div className="mt-6 flex gap-5 text-sm text-white/80">
-            <a href={site.facebook} target="_blank" rel="noreferrer" className="hover:text-white">Facebook</a>
-            <a href={site.instagram} target="_blank" rel="noreferrer" className="hover:text-white">Instagram</a>
+          <div className="mt-6">
+            <SocialLinks tone="dark" />
           </div>
         </div>
         <div>

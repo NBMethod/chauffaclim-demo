@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { RevealObserver } from "@/components/RevealObserver";
 import { getDict } from "@/lib/dictionaries";
 import { isLocale, locales } from "@/lib/site";
 import "@fontsource-variable/outfit";
@@ -24,11 +25,25 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!isLocale(locale)) notFound();
   const t = getDict(locale);
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        {/* Active les animations d'apparition uniquement si JS tourne : sans JS, tout reste visible. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('reveal-ready')" }} />
+      </head>
       <body className="font-sans">
+        {/* Dégradé rouge → bleu réutilisé par les icônes au survol (Entretien & dépannage). */}
+        <svg width="0" height="0" className="absolute" aria-hidden focusable="false">
+          <defs>
+            <linearGradient id="duo-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" style={{ stopColor: "var(--color-heat)" }} />
+              <stop offset="1" style={{ stopColor: "var(--color-cool)" }} />
+            </linearGradient>
+          </defs>
+        </svg>
         <Header locale={locale} nav={t.nav} />
         <main>{children}</main>
         <Footer locale={locale} t={t} />
+        <RevealObserver />
       </body>
     </html>
   );

@@ -29,6 +29,15 @@ export const serviceSlugs = [
 ] as const;
 export type ServiceSlug = (typeof serviceSlugs)[number];
 
+/** Couleur de survol de chaque service : rouge (heat), bleu (cool) ou les deux (duo). */
+export const serviceTone: Record<ServiceSlug, "heat" | "cool" | "duo"> = {
+  chauffage: "heat",
+  climatisation: "cool",
+  plomberie: "cool",
+  "salles-de-bains": "cool",
+  "entretien-depannage": "duo",
+};
+
 export const isLocale = (v: string): v is Locale => (locales as readonly string[]).includes(v);
 export const isService = (v: string): v is ServiceSlug =>
   (serviceSlugs as readonly string[]).includes(v);
