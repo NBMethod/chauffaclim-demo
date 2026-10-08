@@ -5,13 +5,20 @@ type Service = { name: string; short: string; intro: string; items: string[] };
 export type Dict = {
   meta: { title: string; description: string };
   nav: { home: string; services: string; contact: string; quote: string; menu: string };
-  hero: { eyebrow: string; title: [string, string, string]; sub: string; cta: string; call: string };
+  hero: {
+    eyebrow: string;
+    title: [string, string, string];
+    sub: string;
+    cta: string;
+    call: string;
+    discover: string;
+  };
   facts: { label: string; value: string }[];
   servicesSection: { eyebrow: string; title: string; sub: string; more: string; all: string };
   services: Record<ServiceSlug, Service>;
   why: { eyebrow: string; title: string; items: { title: string; text: string }[] };
-  trust: { certs: string; partners: string };
-  cta: { title: string; text: string };
+  trust: { partners: string };
+  cta: { title: string; text: string; write: string };
   servicePage: { included: string; others: string; back: string };
   contact: {
     eyebrow: string;
@@ -26,7 +33,6 @@ export type Dict = {
     address: string;
     hours: string;
     hoursValue: string;
-    maintenance: string;
     follow: string;
   };
   footer: { tagline: string; rights: string; demo: string };
@@ -34,27 +40,28 @@ export type Dict = {
 
 const fr: Dict = {
   meta: {
-    title: "Chauffaclim Luxembourg — Chauffage, climatisation, plomberie",
+    title: "Chauffaclim Luxembourg — Chauffage et climatisation",
     description:
-      "Installation, rénovation et entretien de vos équipements de chauffage, climatisation et plomberie. Entreprise certifiée RGE, QualiPAC et Qualibat.",
+      "Installation et rénovation de vos équipements de chauffage et de climatisation : chaudières, pompes à chaleur, radiateurs, climatisations.",
   },
   nav: { home: "Accueil", services: "Services", contact: "Contact", quote: "Demander un devis", menu: "Menu" },
   hero: {
-    eyebrow: "Chauffage · Climatisation · Plomberie",
+    eyebrow: "Chauffage · Climatisation",
     title: ["Le confort", "thermique,", "toute l'année."],
-    sub: "Installation, rénovation et entretien de vos équipements. Une équipe certifiée qui intervient chez vous, été comme hiver.",
+    sub: "Installation et rénovation de vos équipements de chauffage et de climatisation. Une équipe à vos côtés, été comme hiver.",
     cta: "Demander un devis",
     call: "Appeler",
+    discover: "Découvrir nos services",
   },
   facts: [
-    { label: "Certifications", value: "RGE · QualiPAC · Qualibat" },
-    { label: "Savoir-faire", value: "Installation, rénovation, entretien" },
-    { label: "Disponibilité", value: "Toute l'année, sur rendez-vous" },
+    { label: "Expertise", value: "Chauffage et climatisation" },
+    { label: "Savoir-faire", value: "Installation et rénovation" },
+    { label: "Horaires", value: "Lun – Ven · 9h–12h, 14h–17h" },
   ],
   servicesSection: {
     eyebrow: "Nos métiers",
-    title: "Un seul interlocuteur pour tout votre confort",
-    sub: "De la chaudière à la salle de bains, nous concevons, installons et entretenons vos équipements.",
+    title: "Un seul interlocuteur pour votre confort",
+    sub: "De la chaudière à la climatisation, nous concevons et installons vos équipements.",
     more: "En savoir plus",
     all: "Tous les services",
   },
@@ -85,65 +92,27 @@ const fr: Dict = {
         "Contrôle d'étanchéité",
       ],
     },
-    plomberie: {
-      name: "Plomberie",
-      short: "Sanitaires, chauffe-eau, robinetterie, fuites et canalisations.",
-      intro:
-        "De la robinetterie au chauffe-eau, nous prenons en charge l'installation et la réparation de l'ensemble de vos équipements sanitaires.",
-      items: [
-        "Chauffe-eau",
-        "Lavabos et robinetterie",
-        "Baignoires, douches et toilettes",
-        "Réparation de fuites",
-        "Débouchage de canalisations",
-        "Adoucisseurs d'eau",
-      ],
-    },
-    "salles-de-bains": {
-      name: "Salles de bains",
-      short: "Rénovation complète, du mobilier aux finitions.",
-      intro:
-        "Nous rénovons votre salle de bains de A à Z : plomberie, sanitaires, mobilier et finitions, pour un espace à votre image.",
-      items: [
-        "Rénovation complète de salle de bains",
-        "Meubles et étagères",
-        "Colonnes en bois",
-        "Miroirs",
-        "Douches, baignoires et sanitaires",
-      ],
-    },
-    "entretien-depannage": {
-      name: "Entretien & dépannage",
-      short: "Chauffaclim Services : l'entretien et le dépannage de vos équipements.",
-      intro:
-        "Chauffaclim Services assure l'entretien et le dépannage de vos installations pour prolonger leur durée de vie et garantir leur sécurité.",
-      items: [
-        "Chaudières",
-        "Chauffe-eau gaz",
-        "Climatisation",
-        "Pompes à chaleur air/air et air/eau",
-        "VMC",
-        "Adoucisseurs",
-        "Désembouage",
-      ],
-    },
   },
   why: {
     eyebrow: "Pourquoi nous choisir",
-    title: "Des installations bien pensées, bien posées, bien suivies",
+    title: "Des installations bien pensées, bien posées",
     items: [
-      { title: "Une entreprise certifiée", text: "Qualifications RGE, QualiPAC et Qualibat pour des travaux réalisés dans les règles de l'art." },
+      { title: "Un interlocuteur unique", text: "Du premier échange à la mise en service, vous gardez le même contact tout au long de votre projet." },
       { title: "Du neuf à la rénovation", text: "Nous intervenons aussi bien sur des installations neuves que sur la remise à niveau de l'existant." },
-      { title: "Un suivi dans la durée", text: "Avec Chauffaclim Services, l'entretien et le dépannage restent entre les mêmes mains." },
+      { title: "Des solutions adaptées", text: "Chaudière, pompe à chaleur ou climatisation : nous vous orientons vers l'équipement adapté à votre logement." },
     ],
   },
-  trust: { certs: "Qualifications", partners: "Partenaires" },
-  cta: { title: "Un projet, une panne, une question ?", text: "Décrivez-nous votre besoin, nous vous recontactons pour convenir d'un rendez-vous." },
-  servicePage: { included: "Nos prestations", others: "Autres services", back: "Tous les services" },
+  trust: { partners: "Partenaires" },
+  cta: {
+    title: "Un projet, une question ?",
+    text: "Décrivez-nous votre besoin, nous vous recontactons pour convenir d'un rendez-vous.",
+    write: "Nous écrire",
+  },
+  servicePage: { included: "Nos prestations", others: "Autre service", back: "Tous les services" },
   contact: {
     eyebrow: "Contact",
     title: "Parlons de votre projet",
-    sub: "Nous intervenons sur rendez-vous. Écrivez-nous ou appelez-nous directement.",
+    sub: "Décrivez-nous votre besoin, nous vous répondons du lundi au vendredi.",
     name: "Nom",
     email: "E-mail",
     phone: "Téléphone",
@@ -152,12 +121,11 @@ const fr: Dict = {
     send: "Envoyer la demande",
     address: "Adresse",
     hours: "Horaires",
-    hoursValue: "Sur rendez-vous",
-    maintenance: "Entretien & dépannage",
+    hoursValue: "Du lundi au vendredi\n9h – 12h · 14h – 17h",
     follow: "Nous suivre",
   },
   footer: {
-    tagline: "Chauffage, climatisation et plomberie.",
+    tagline: "Chauffage et climatisation.",
     rights: "Tous droits réservés.",
     demo: "Maquette de démonstration",
   },
@@ -165,27 +133,28 @@ const fr: Dict = {
 
 const de: Dict = {
   meta: {
-    title: "Chauffaclim Luxembourg — Heizung, Klima, Sanitär",
+    title: "Chauffaclim Luxembourg — Heizung und Klimatisierung",
     description:
-      "Installation, Renovierung und Wartung Ihrer Heizungs-, Klima- und Sanitäranlagen. Zertifiziert nach RGE, QualiPAC und Qualibat.",
+      "Installation und Renovierung Ihrer Heizungs- und Klimaanlagen: Heizkessel, Wärmepumpen, Heizkörper, Klimaanlagen.",
   },
   nav: { home: "Startseite", services: "Leistungen", contact: "Kontakt", quote: "Angebot anfragen", menu: "Menü" },
   hero: {
-    eyebrow: "Heizung · Klima · Sanitär",
+    eyebrow: "Heizung · Klimatisierung",
     title: ["Wohlfühlklima,", "zu jeder", "Jahreszeit."],
-    sub: "Installation, Renovierung und Wartung Ihrer Anlagen. Ein zertifiziertes Team, das im Sommer wie im Winter für Sie da ist.",
+    sub: "Installation und Renovierung Ihrer Heizungs- und Klimaanlagen. Ein Team an Ihrer Seite, im Sommer wie im Winter.",
     cta: "Angebot anfragen",
     call: "Anrufen",
+    discover: "Unsere Leistungen",
   },
   facts: [
-    { label: "Zertifizierungen", value: "RGE · QualiPAC · Qualibat" },
-    { label: "Kompetenz", value: "Installation, Renovierung, Wartung" },
-    { label: "Verfügbarkeit", value: "Ganzjährig, nach Vereinbarung" },
+    { label: "Fachgebiet", value: "Heizung und Klimatisierung" },
+    { label: "Kompetenz", value: "Installation und Renovierung" },
+    { label: "Öffnungszeiten", value: "Mo – Fr · 9–12 Uhr, 14–17 Uhr" },
   ],
   servicesSection: {
     eyebrow: "Unsere Leistungen",
-    title: "Ein Ansprechpartner für Ihren gesamten Wohnkomfort",
-    sub: "Vom Heizkessel bis zum Badezimmer: Wir planen, installieren und warten Ihre Anlagen.",
+    title: "Ein Ansprechpartner für Ihren Wohnkomfort",
+    sub: "Vom Heizkessel bis zur Klimaanlage: Wir planen und installieren Ihre Anlagen.",
     more: "Mehr erfahren",
     all: "Alle Leistungen",
   },
@@ -216,65 +185,27 @@ const de: Dict = {
         "Dichtheitsprüfung",
       ],
     },
-    plomberie: {
-      name: "Sanitär",
-      short: "Sanitäranlagen, Warmwasserbereiter, Armaturen, Lecks und Rohre.",
-      intro:
-        "Von der Armatur bis zum Warmwasserbereiter übernehmen wir Installation und Reparatur Ihrer gesamten Sanitärausstattung.",
-      items: [
-        "Warmwasserbereiter",
-        "Waschbecken und Armaturen",
-        "Badewannen, Duschen und WCs",
-        "Reparatur von Lecks",
-        "Rohrreinigung",
-        "Wasserenthärter",
-      ],
-    },
-    "salles-de-bains": {
-      name: "Badezimmer",
-      short: "Komplettrenovierung, von den Möbeln bis zum letzten Detail.",
-      intro:
-        "Wir renovieren Ihr Badezimmer von A bis Z: Sanitärinstallation, Ausstattung, Möbel und Feinarbeiten, ganz nach Ihren Vorstellungen.",
-      items: [
-        "Komplettrenovierung von Badezimmern",
-        "Möbel und Regale",
-        "Hochschränke aus Holz",
-        "Spiegel",
-        "Duschen, Badewannen und Sanitärobjekte",
-      ],
-    },
-    "entretien-depannage": {
-      name: "Wartung & Notdienst",
-      short: "Chauffaclim Services: Wartung und Reparatur Ihrer Anlagen.",
-      intro:
-        "Chauffaclim Services übernimmt Wartung und Reparatur Ihrer Anlagen, um deren Lebensdauer zu verlängern und ihre Sicherheit zu gewährleisten.",
-      items: [
-        "Heizkessel",
-        "Gas-Warmwasserbereiter",
-        "Klimaanlagen",
-        "Luft/Luft- und Luft/Wasser-Wärmepumpen",
-        "Lüftungsanlagen",
-        "Wasserenthärter",
-        "Heizkreisspülung",
-      ],
-    },
   },
   why: {
     eyebrow: "Warum wir",
-    title: "Gut geplant, sauber montiert, zuverlässig betreut",
+    title: "Gut geplant, sauber montiert",
     items: [
-      { title: "Ein zertifizierter Betrieb", text: "Qualifikationen RGE, QualiPAC und Qualibat für fachgerecht ausgeführte Arbeiten." },
+      { title: "Ein fester Ansprechpartner", text: "Vom ersten Gespräch bis zur Inbetriebnahme haben Sie während Ihres gesamten Projekts denselben Kontakt." },
       { title: "Neubau und Renovierung", text: "Wir arbeiten an neuen Anlagen ebenso wie an der Modernisierung bestehender Systeme." },
-      { title: "Langfristige Betreuung", text: "Mit Chauffaclim Services bleiben Wartung und Reparatur in denselben Händen." },
+      { title: "Passende Lösungen", text: "Heizkessel, Wärmepumpe oder Klimaanlage: Wir beraten Sie zur passenden Anlage für Ihr Zuhause." },
     ],
   },
-  trust: { certs: "Qualifikationen", partners: "Partner" },
-  cta: { title: "Ein Projekt, eine Störung, eine Frage?", text: "Schildern Sie uns Ihr Anliegen, wir melden uns für eine Terminvereinbarung." },
-  servicePage: { included: "Unsere Leistungen", others: "Weitere Leistungen", back: "Alle Leistungen" },
+  trust: { partners: "Partner" },
+  cta: {
+    title: "Ein Projekt, eine Frage?",
+    text: "Schildern Sie uns Ihr Anliegen, wir melden uns für eine Terminvereinbarung.",
+    write: "Schreiben Sie uns",
+  },
+  servicePage: { included: "Unsere Leistungen", others: "Weitere Leistung", back: "Alle Leistungen" },
   contact: {
     eyebrow: "Kontakt",
     title: "Sprechen wir über Ihr Projekt",
-    sub: "Wir arbeiten nach Terminvereinbarung. Schreiben Sie uns oder rufen Sie uns direkt an.",
+    sub: "Schildern Sie uns Ihr Anliegen, wir antworten Ihnen von Montag bis Freitag.",
     name: "Name",
     email: "E-Mail",
     phone: "Telefon",
@@ -283,12 +214,11 @@ const de: Dict = {
     send: "Anfrage senden",
     address: "Adresse",
     hours: "Öffnungszeiten",
-    hoursValue: "Nach Vereinbarung",
-    maintenance: "Wartung & Notdienst",
+    hoursValue: "Montag bis Freitag\n9 – 12 Uhr · 14 – 17 Uhr",
     follow: "Folgen Sie uns",
   },
   footer: {
-    tagline: "Heizung, Klima und Sanitär.",
+    tagline: "Heizung und Klimatisierung.",
     rights: "Alle Rechte vorbehalten.",
     demo: "Demo-Entwurf",
   },
@@ -296,27 +226,28 @@ const de: Dict = {
 
 const en: Dict = {
   meta: {
-    title: "Chauffaclim Luxembourg — Heating, air conditioning, plumbing",
+    title: "Chauffaclim Luxembourg — Heating and air conditioning",
     description:
-      "Installation, renovation and maintenance of your heating, air conditioning and plumbing systems. RGE, QualiPAC and Qualibat certified.",
+      "Installation and renovation of your heating and air conditioning: boilers, heat pumps, radiators, air conditioning units.",
   },
   nav: { home: "Home", services: "Services", contact: "Contact", quote: "Request a quote", menu: "Menu" },
   hero: {
-    eyebrow: "Heating · Air conditioning · Plumbing",
+    eyebrow: "Heating · Air conditioning",
     title: ["Indoor comfort,", "all year", "round."],
-    sub: "Installation, renovation and maintenance of your equipment. A certified team at your door, summer and winter alike.",
+    sub: "Installation and renovation of your heating and air conditioning. A team by your side, summer and winter alike.",
     cta: "Request a quote",
     call: "Call",
+    discover: "Our services",
   },
   facts: [
-    { label: "Certifications", value: "RGE · QualiPAC · Qualibat" },
-    { label: "Expertise", value: "Installation, renovation, maintenance" },
-    { label: "Availability", value: "All year, by appointment" },
+    { label: "Expertise", value: "Heating and air conditioning" },
+    { label: "Know-how", value: "Installation and renovation" },
+    { label: "Opening hours", value: "Mon – Fri · 9am–12pm, 2pm–5pm" },
   ],
   servicesSection: {
     eyebrow: "What we do",
-    title: "One contact for all your home comfort",
-    sub: "From the boiler to the bathroom, we design, install and maintain your equipment.",
+    title: "One contact for your home comfort",
+    sub: "From the boiler to air conditioning, we design and install your equipment.",
     more: "Learn more",
     all: "All services",
   },
@@ -347,65 +278,27 @@ const en: Dict = {
         "Tightness testing",
       ],
     },
-    plomberie: {
-      name: "Plumbing",
-      short: "Sanitary ware, water heaters, taps, leaks and drains.",
-      intro:
-        "From taps to water heaters, we handle the installation and repair of all your sanitary equipment.",
-      items: [
-        "Water heaters",
-        "Washbasins and taps",
-        "Baths, showers and toilets",
-        "Leak repair",
-        "Drain unblocking",
-        "Water softeners",
-      ],
-    },
-    "salles-de-bains": {
-      name: "Bathrooms",
-      short: "Complete renovation, from furniture to finishing touches.",
-      intro:
-        "We renovate your bathroom from start to finish: plumbing, sanitary ware, furniture and finishes, for a space that suits you.",
-      items: [
-        "Complete bathroom renovation",
-        "Furniture and shelving",
-        "Wooden tall units",
-        "Mirrors",
-        "Showers, baths and sanitary ware",
-      ],
-    },
-    "entretien-depannage": {
-      name: "Maintenance & repairs",
-      short: "Chauffaclim Services: maintenance and repair of your equipment.",
-      intro:
-        "Chauffaclim Services maintains and repairs your installations to extend their lifespan and keep them safe.",
-      items: [
-        "Boilers",
-        "Gas water heaters",
-        "Air conditioning",
-        "Air-to-air and air-to-water heat pumps",
-        "Mechanical ventilation",
-        "Water softeners",
-        "Circuit flushing",
-      ],
-    },
   },
   why: {
     eyebrow: "Why choose us",
-    title: "Well designed, well fitted, well looked after",
+    title: "Well designed, well fitted",
     items: [
-      { title: "A certified company", text: "RGE, QualiPAC and Qualibat qualifications for work carried out to professional standards." },
+      { title: "A single point of contact", text: "From the first conversation to commissioning, you keep the same contact throughout your project." },
       { title: "New builds and renovations", text: "We work on new installations as well as upgrades to existing systems." },
-      { title: "Long-term follow-up", text: "With Chauffaclim Services, maintenance and repairs stay in the same hands." },
+      { title: "The right solution", text: "Boiler, heat pump or air conditioning: we help you choose the equipment that suits your home." },
     ],
   },
-  trust: { certs: "Qualifications", partners: "Partners" },
-  cta: { title: "A project, a breakdown, a question?", text: "Tell us what you need and we will get back to you to arrange an appointment." },
-  servicePage: { included: "What we do", others: "Other services", back: "All services" },
+  trust: { partners: "Partners" },
+  cta: {
+    title: "A project, a question?",
+    text: "Tell us what you need and we will get back to you to arrange an appointment.",
+    write: "Email us",
+  },
+  servicePage: { included: "What we do", others: "Other service", back: "All services" },
   contact: {
     eyebrow: "Contact",
     title: "Let's talk about your project",
-    sub: "We work by appointment. Write to us or call us directly.",
+    sub: "Tell us what you need, we reply Monday to Friday.",
     name: "Name",
     email: "Email",
     phone: "Phone",
@@ -414,12 +307,11 @@ const en: Dict = {
     send: "Send request",
     address: "Address",
     hours: "Opening hours",
-    hoursValue: "By appointment",
-    maintenance: "Maintenance & repairs",
+    hoursValue: "Monday to Friday\n9am – 12pm · 2pm – 5pm",
     follow: "Follow us",
   },
   footer: {
-    tagline: "Heating, air conditioning and plumbing.",
+    tagline: "Heating and air conditioning.",
     rights: "All rights reserved.",
     demo: "Demo mockup",
   },

@@ -25,7 +25,6 @@ export default async function ServicePage({ params }: Props) {
   if (!isLocale(locale) || !isService(slug)) notFound();
   const t = getDict(locale);
   const s = t.services[slug];
-  const isMaintenance = slug === "entretien-depannage";
 
   return (
     <>
@@ -45,15 +44,10 @@ export default async function ServicePage({ params }: Props) {
               <Link href={`/${locale}/contact`} className="btn btn-dark">
                 {t.nav.quote} <Arrow className="h-4 w-4" />
               </Link>
-              <a href={site.phoneHref} className="btn btn-ghost">{site.phoneDisplay}</a>
+              {site.phone && (
+                <a href={site.phone.href} className="btn btn-ghost">{site.phone.display}</a>
+              )}
             </div>
-            {isMaintenance && (
-              <p className="mt-6 text-sm text-muted">
-                <a href={`mailto:${site.serviceEmail}`} className="underline underline-offset-4 hover:text-ink">
-                  {site.serviceEmail}
-                </a>
-              </p>
-            )}
           </div>
           <div className="h-fit rounded-3xl border border-line bg-white p-8 md:p-10" {...reveal(2)}>
             <h2 className="eyebrow">{t.servicePage.included}</h2>

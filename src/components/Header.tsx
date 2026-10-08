@@ -86,9 +86,11 @@ export function Header({ locale, nav }: { locale: Locale; nav: Dict["nav"] }) {
             ))}
             <div className="mt-3 flex items-center justify-between">
               {langs}
-              <a href={site.phoneHref} className="text-sm font-medium">
-                {site.phoneDisplay}
-              </a>
+              {site.phone && (
+                <a href={site.phone.href} className="text-sm font-medium">
+                  {site.phone.display}
+                </a>
+              )}
             </div>
           </div>
         </div>

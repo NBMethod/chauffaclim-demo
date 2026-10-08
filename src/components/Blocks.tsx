@@ -8,16 +8,14 @@ export function ServiceGrid({ locale, t, exclude }: { locale: Locale; t: Dict; e
   const list = serviceSlugs.filter((s) => s !== exclude);
   return (
     <div
-      className={`grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 ${
-        exclude ? "lg:grid-cols-4" : "lg:grid-cols-3"
-      }`}
+      className={`grid gap-px overflow-hidden rounded-3xl border border-line bg-line ${list.length > 1 ? "sm:grid-cols-2" : ""} ${list.length > 2 ? "lg:grid-cols-3" : ""} ${list.length === 1 ? "md:max-w-xl" : ""}`}
     >
       {list.map((slug, i) => (
         <Link
           key={slug}
           href={`/${locale}/services/${slug}`}
           className={`svc svc-${serviceTone[slug]} group flex min-h-60 flex-col bg-paper p-8 outline-none transition-colors hover:bg-white focus-visible:bg-white ${
-            !exclude && i === list.length - 1 ? "sm:col-span-2 lg:col-span-2" : ""
+            list.length > 2 && list.length % 3 === 2 && i === list.length - 1 ? "lg:col-span-2" : ""
           }`}
         >
           <div className="flex flex-1 flex-col" {...reveal(i)}>
@@ -50,9 +48,15 @@ export function CtaBand({ locale, t }: { locale: Locale; t: Dict }) {
             <Link href={`/${locale}/contact`} className="btn btn-light">
               {t.nav.quote}
             </Link>
-            <a href={site.phoneHref} className="btn border border-white/30 hover:bg-white/10">
-              {site.phoneDisplay}
-            </a>
+            {site.phone ? (
+              <a href={site.phone.href} className="btn border border-white/30 hover:bg-white/10">
+                {site.phone.display}
+              </a>
+            ) : (
+              <a href={`mailto:${site.email}`} className="btn border border-white/30 hover:bg-white/10">
+                {t.cta.write}
+              </a>
+            )}
           </div>
         </div>
       </div>

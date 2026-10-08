@@ -34,9 +34,11 @@ export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
               <br />
               {site.address.zip} {site.address.city}
             </p>
-            <p><a href={site.phoneHref} className="hover:text-white">{site.phoneDisplay}</a></p>
+            {site.phone && (
+              <p><a href={site.phone.href} className="hover:text-white">{site.phone.display}</a></p>
+            )}
             <p><a href={`mailto:${site.email}`} className="break-all hover:text-white">{site.email}</a></p>
-            <p className="text-white/50">{t.contact.hours} : {t.contact.hoursValue}</p>
+            <p className="whitespace-pre-line text-white/50">{t.contact.hoursValue}</p>
           </address>
         </div>
       </div>

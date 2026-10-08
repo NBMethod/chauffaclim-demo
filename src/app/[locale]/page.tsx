@@ -30,9 +30,15 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <Link href={`/${locale}/contact`} className="btn btn-dark">
                 {t.hero.cta} <Arrow className="h-4 w-4" />
               </Link>
-              <a href={site.phoneHref} className="btn btn-ghost">
-                {t.hero.call} · {site.phoneDisplay}
-              </a>
+              {site.phone ? (
+                <a href={site.phone.href} className="btn btn-ghost">
+                  {t.hero.call} · {site.phone.display}
+                </a>
+              ) : (
+                <Link href={`/${locale}/services`} className="btn btn-ghost">
+                  {t.hero.discover}
+                </Link>
+              )}
             </div>
           </div>
           <div {...reveal(2)} className="relative mx-auto hidden aspect-square w-full max-w-sm items-center justify-center rounded-[2.5rem] border border-line bg-white lg:flex">
@@ -84,13 +90,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      <section className="container-x grid gap-12 py-20 md:grid-cols-2">
-        {(
-          [
-            [t.trust.certs, site.certifications],
-            [t.trust.partners, site.partners],
-          ] as const
-        ).map(([title, list], i) => (
+      <section className="container-x py-20">
+        {[[t.trust.partners, site.partners] as const].map(([title, list], i) => (
           <div key={title} {...reveal(i)}>
             <p className="eyebrow">{title}</p>
             <ul className="mt-5 flex flex-wrap gap-2.5">

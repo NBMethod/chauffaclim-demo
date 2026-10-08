@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealObserver } from "@/components/RevealObserver";
 import { getDict } from "@/lib/dictionaries";
-import { isLocale, locales } from "@/lib/site";
+import { isLocale, locales, site } from "@/lib/site";
 import "@fontsource-variable/outfit";
 import "../globals.css";
 
@@ -17,7 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getDict(locale);
-  return { title: { default: t.meta.title, template: "%s — Chauffaclim Luxembourg" }, description: t.meta.description };
+  return {
+    metadataBase: new URL(site.url),
+    title: { default: t.meta.title, template: "%s — Chauffaclim Luxembourg" },
+    description: t.meta.description,
+    openGraph: { siteName: "Chauffaclim Luxembourg", locale, type: "website" },
+  };
 }
 
 export default async function LocaleLayout({ children, params }: Props) {

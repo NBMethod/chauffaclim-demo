@@ -20,11 +20,12 @@ export default async function Contact({ params }: Props) {
   const c = t.contact;
 
   const rows: [string, React.ReactNode][] = [
-    [c.phone, <a key="p" href={site.phoneHref} className="hover:underline">{site.phoneDisplay}</a>],
+    ...(site.phone
+      ? [[c.phone, <a key="p" href={site.phone.href} className="hover:underline">{site.phone.display}</a>] as [string, React.ReactNode]]
+      : []),
     [c.email, <a key="e" href={`mailto:${site.email}`} className="break-all hover:underline">{site.email}</a>],
-    [c.maintenance, <a key="s" href={`mailto:${site.serviceEmail}`} className="break-all hover:underline">{site.serviceEmail}</a>],
     [c.address, <>{site.address.street}<br />{site.address.zip} {site.address.city}</>],
-    [c.hours, c.hoursValue],
+    [c.hours, <span key="h" className="whitespace-pre-line">{c.hoursValue}</span>],
     [c.follow, <div key="f" className="mt-1"><SocialLinks tone="dark" /></div>],
   ];
 
