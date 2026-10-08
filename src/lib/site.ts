@@ -20,7 +20,7 @@ export const site = {
   url: "https://chauffaclim-luxembourg.lu",
   phone: phone as Phone | null,
   email: "chauffaclim.sarl@gmail.com",
-  address: { street: "4 Rue des Potiers d'Etain", zip: "57070", city: "Metz" },
+  address: { street: "60 Rue de Luxembourg", zip: "L-5408", city: "Bous" },
   facebook: "https://www.facebook.com/p/Chauffaclim-61557464862677/",
   instagram: "https://www.instagram.com/chauffaclim.sarl/",
   partners: ["GRDF", "ENGIE", "EDF", "Global Service Renov", "MTS"],
