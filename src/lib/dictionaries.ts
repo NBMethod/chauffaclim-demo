@@ -127,7 +127,7 @@ const fr: Dict = {
   footer: {
     tagline: "Chauffage et climatisation.",
     rights: "Tous droits réservés.",
-    demo: "Maquette de démonstration",
+    demo: "Réalisé par",
   },
 };
 
@@ -220,7 +220,7 @@ const de: Dict = {
   footer: {
     tagline: "Heizung und Klimatisierung.",
     rights: "Alle Rechte vorbehalten.",
-    demo: "Demo-Entwurf",
+    demo: "Erstellt von",
   },
 };
 
@@ -313,7 +313,7 @@ const en: Dict = {
   footer: {
     tagline: "Heating and air conditioning.",
     rights: "All rights reserved.",
-    demo: "Demo mockup",
+    demo: "Made by",
   },
 };
 
