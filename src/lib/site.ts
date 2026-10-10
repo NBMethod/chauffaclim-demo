@@ -19,7 +19,7 @@ export const site = {
   domain: "chauffaclim-luxembourg.lu",
   url: "https://chauffaclim-luxembourg.lu",
   phone: phone as Phone | null,
-  email: "chauffaclim.sarl@gmail.com",
+  email: "contact@chauffaclim-luxembourg.lu",
   address: { street: "60 Rue de Luxembourg", zip: "L-5408", city: "Bous" },
   facebook: "https://www.facebook.com/p/Chauffaclim-61557464862677/",
   instagram: "https://www.instagram.com/chauffaclim.sarl/",
