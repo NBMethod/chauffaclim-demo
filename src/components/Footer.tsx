@@ -45,7 +45,17 @@ export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col justify-between gap-2 py-6 text-xs text-white/40 sm:flex-row">
           <p>© {new Date().getFullYear()} {site.name} {site.baseline}. {t.footer.rights}</p>
-          <p>{t.footer.demo}</p>
+          <p>
+            {t.footer.demo}{" "}
+              <a
+                href="https://nbmethod.com"
+                target="_blank"
+                rel="noopener"
+                className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+              >
+                NBMethod
+              </a>
+          </p>
         </div>
       </div>
     </footer>
